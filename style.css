@@ -12,7 +12,7 @@ body {
 
 .container {
     width: 90%;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 40px auto;
 }
 
@@ -56,7 +56,7 @@ header p {
 
 .summary {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin-bottom: 25px;
 }
@@ -65,7 +65,7 @@ header p {
     background: white;
     padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
 .summary-card p {
@@ -73,7 +73,7 @@ header p {
 }
 
 .summary-card h3 {
-    font-size: 28px;
+    font-size: 27px;
     margin-top: 10px;
 }
 
@@ -85,6 +85,10 @@ header p {
     color: #dc2626;
 }
 
+#transactionCount {
+    color: #2563eb;
+}
+
 /* Cards */
 
 .card {
@@ -93,7 +97,7 @@ header p {
     border-radius: 12px;
     margin-bottom: 25px;
 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
 .card h2 {
@@ -109,6 +113,7 @@ form {
 
 input,
 select,
+textarea,
 button {
     width: 100%;
     padding: 13px;
@@ -119,16 +124,50 @@ button {
     font-size: 15px;
 }
 
+textarea {
+    height: 70px;
+    resize: none;
+    overflow-y: auto;
+    font-family: Arial, sans-serif;
+}
+
 button {
     background: #111827;
     color: white;
     border: none;
-
     cursor: pointer;
 }
 
 button:hover {
     opacity: 0.9;
+}
+
+.cancel-btn {
+    background: #6b7280;
+}
+
+/* Filters */
+
+.filters {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 12px;
+}
+
+/* Charts */
+
+.charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.chart-card {
+    min-height: 350px;
+}
+
+.chart-card canvas {
+    max-height: 270px;
 }
 
 /* History */
@@ -141,8 +180,10 @@ button:hover {
     margin-bottom: 20px;
 }
 
-.history-header select {
-    width: 150px;
+.clear-btn {
+    width: auto;
+    background: #dc2626;
+    padding: 10px 15px;
 }
 
 /* Transaction */
@@ -169,7 +210,7 @@ button:hover {
 .transaction-right {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
 
 .income-amount {
@@ -182,14 +223,17 @@ button:hover {
     font-weight: bold;
 }
 
+.edit-btn {
+    width: auto;
+    padding: 7px 12px;
+    background: #2563eb;
+}
+
 .delete-btn {
     width: auto;
     padding: 7px 12px;
-
     background: #dc2626;
 }
-
-/* Empty message */
 
 .empty {
     text-align: center;
@@ -197,9 +241,9 @@ button:hover {
     padding: 20px;
 }
 
-/* Responsive */
+/* Mobile */
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
     .container {
         width: 94%;
@@ -214,14 +258,12 @@ button:hover {
         grid-template-columns: 1fr;
     }
 
-    .history-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+    .charts {
+        grid-template-columns: 1fr;
     }
 
-    .history-header select {
-        width: 100%;
+    .filters {
+        grid-template-columns: 1fr;
     }
 
     .transaction {
@@ -234,19 +276,8 @@ button:hover {
         width: 100%;
         justify-content: space-between;
     }
-}
 
-textarea {
-    width: 100%;
-    height: 70px;
-    padding: 13px;
-
-    border: 1px solid #ddd;
-    border-radius: 8px;
-
-    font-size: 15px;
-    font-family: Arial, sans-serif;
-
-    resize: none;
-    overflow-y: auto;
+    .history-header {
+        gap: 10px;
+    }
 }
